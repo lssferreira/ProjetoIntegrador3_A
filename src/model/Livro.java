@@ -6,6 +6,23 @@ public class Livro {
     private String Isbn;
     private Autor Autores;
 
+    private String Editora;
+
+    public String getEditora() {
+        return Editora;
+    }
+
+    public void setEditora(String editora) {
+        Editora = editora;
+    }
+
+    public Livro(String titulo, String isbn, Autor autores, int anoPublicao, String editora) {
+        Titulo = titulo;
+        Isbn = isbn;
+        Autores = autores;
+        AnoPublicao = anoPublicao;
+        Editora = editora;
+    }
     public Livro(String titulo, String isbn, Autor autores, int anoPublicao) {
         Titulo = titulo;
         Isbn = isbn;

@@ -11,23 +11,29 @@ public class Autor {
         Nome = nome;
         PaisOrigem = paisOrigem;
     }
+
     public Autor(String nome) {
         Nome = nome;
     }
 
 
     @Override
-    public String toString(){
-        return "Autor: %s , %s".formatted(getNome(), getPaisOrigem());
+    public String toString() {
+        if (getPaisOrigem() != "")
+            return "Autor: %s , %s".formatted(getNome(), getPaisOrigem());
+        else
+            return "Autor: %s".formatted(getNome());
+
     }
 
     //region getter
     public String getNome() {
         return Nome;
     }
+
     public String getPaisOrigem() {
         if (PaisOrigem != null)
-        return PaisOrigem;
+            return PaisOrigem;
         else
             return "";
     }
