@@ -24,8 +24,6 @@ public class ListaDeLivros {
     }
 
     public void Ordenar(){
-       for (Livro livro : ListaLivro)
-           System.out.println(livro);
     }
 
 }
