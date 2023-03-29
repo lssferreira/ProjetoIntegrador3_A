@@ -1,9 +1,15 @@
 package obj;
 
-import obj.Nodo;
+import java.util.Comparator;
 
 public class ListaEncadeada<T> {
-    private Nodo<T> inicio;
+    private Node<T> inicio;
+
+    private int tamanho;
+
+    public int getTamanho() {
+        return this.tamanho;
+    }
 
     public ListaEncadeada() {
         this.inicio = null;
@@ -13,28 +19,35 @@ public class ListaEncadeada<T> {
         return inicio == null;
     }
 
+    public int Tamanho(){
+        return tamanho;
+    }
+
     public void inserirInicio(T valor) {
-        Nodo<T> novoNodo = new Nodo<>(valor);
-        novoNodo.setProximo(inicio);
-        inicio = novoNodo;
+        Node<T> novoNode = new Node<>(valor);
+        novoNode.setProximo(inicio);
+        inicio = novoNode;
+        tamanho++;
     }
 
     public void inserirFim(T valor) {
-        Nodo<T> novoNodo = new Nodo<>(valor);
+        Node<T> novoNode = new Node<>(valor);
         if (estaVazia()) {
-            inicio = novoNodo;
+            inicio = novoNode;
         } else {
-            Nodo<T> nodoAtual = inicio;
-            while (nodoAtual.getProximo() != null) {
-                nodoAtual = nodoAtual.getProximo();
+            Node<T> nodeAtual = inicio;
+            while (nodeAtual.getProximo() != null) {
+                nodeAtual = nodeAtual.getProximo();
             }
-            nodoAtual.setProximo(novoNodo);
+            nodeAtual.setProximo(novoNode);
+            tamanho++;
         }
     }
 
     public void removerInicio() {
         if (!estaVazia()) {
             inicio = inicio.getProximo();
+            tamanho--;
         }
     }
 
@@ -43,25 +56,65 @@ public class ListaEncadeada<T> {
             if (inicio.getProximo() == null) {
                 inicio = null;
             } else {
-                Nodo<T> nodoAtual = inicio;
-                while (nodoAtual.getProximo().getProximo() != null) {
-                    nodoAtual = nodoAtual.getProximo();
+                Node<T> nodeAtual = inicio;
+                while (nodeAtual.getProximo().getProximo() != null) {
+                    nodeAtual = nodeAtual.getProximo();
                 }
-                nodoAtual.setProximo(null);
+                nodeAtual.setProximo(null);
+                tamanho--;
             }
         }
     }
 
     public void exibirLista() {
-        Nodo<T> nodoAtual = inicio;
+        Node<T> nodeAtual = inicio;
         if (this.estaVazia())
             System.out.print("Lista vazia");
         else
             System.out.println("Lista de Livros:");
-        while (nodoAtual != null) {
-            System.out.println(nodoAtual.getValor());
-            nodoAtual = nodoAtual.getProximo();
+        while (nodeAtual != null) {
+            System.out.println(nodeAtual.getValor());
+            nodeAtual = nodeAtual.getProximo();
         }
-        System.out.println();
+        System.out.println("Tamanho da Lista:" + this.Tamanho());
+    }
+
+
+    public void ordenar(Comparator<T> comparador) {
+        if (inicio == null) {
+            return;
+        }
+
+        boolean troca = true;
+
+        while (troca) {
+            troca = false;
+
+            Node<T> anterior = null;
+            Node<T> atual = inicio;
+            Node<T> proximo = inicio.getProximo();
+
+            while (proximo != null) {
+                if (comparador.compare(atual.getValor(), proximo.getValor()) > 0) {
+                    atual.setProximo(proximo.getProximo());
+                    proximo.setProximo(atual);
+
+                    if (anterior == null) {
+                        inicio = proximo;
+                    } else {
+                        anterior.setProximo(proximo);
+                    }
+
+                    anterior = proximo;
+                    proximo = atual.getProximo();
+
+                    troca = true;
+                } else {
+                    anterior = atual;
+                    atual = atual.getProximo();
+                    proximo = atual.getProximo();
+                }
+            }
+        }
     }
 }

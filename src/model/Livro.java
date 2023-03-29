@@ -32,7 +32,7 @@ public class Livro {
 
 @Override
     public String toString(){
-        return "Livro: %s, ISBN  %s, Autor:(%s) , , Ano Publicação: %d".formatted(getTitulo(), getIsbn(), getAutores().toString(), getAnoPublicao());
+        return "Livro: %s, ISBN  %s, Autor:(%s) , Ano Publicação: %d".formatted(getTitulo(), getIsbn(), getAutores().toString(), getAnoPublicao());
     }
 
  //region getters and setters

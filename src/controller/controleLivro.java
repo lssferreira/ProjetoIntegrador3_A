@@ -3,8 +3,10 @@ package controller;
 import Utils.OpcoesView;
 import model.Autor;
 import model.Livro;
+import obj.ComparadorLivroPorTitulo;
 import obj.ListaEncadeada;
 
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class controleLivro {
@@ -43,8 +45,9 @@ public class controleLivro {
                     continuar = false;
                     break;
                 }
-                default:{
-                    OpcoesView.OpcaoInvalida();}
+                default: {
+                    OpcoesView.OpcaoInvalida();
+                }
 
             }
 
@@ -62,9 +65,12 @@ public class controleLivro {
             System.out.println("9 - Voltar");
             OpcoesView.DigiteaOpcaoDesejada();
             Scanner scanner = new Scanner(System.in);
+            Comparator<Livro> comparador = new ComparadorLivroPorTitulo();
             var resp = scanner.nextLine().trim();
             switch (resp) {
                 case "1":
+                    listaLivro.ordenar(comparador);
+                    listaLivro.exibirLista();
                     break;
                 case "2":
                     break;
@@ -72,7 +78,7 @@ public class controleLivro {
                     break;
                 case "4":
                     break;
-                case "9":{
+                case "9": {
                     continuar = false;
                     break;
                 }

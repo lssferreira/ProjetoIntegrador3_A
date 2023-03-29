@@ -1,9 +1,9 @@
 package obj;
-public class Nodo<T> {
+public class Node<T> {
     private T valor;
-    private Nodo<T> proximo;
+    private Node<T> proximo;
 
-    public Nodo(T valor) {
+    public Node(T valor) {
         this.valor = valor;
     }
 
@@ -11,11 +11,11 @@ public class Nodo<T> {
         return valor;
     }
 
-    public Nodo<T> getProximo() {
+    public Node<T> getProximo() {
         return proximo;
     }
 
-    public void setProximo(Nodo<T> proximo) {
+    public void setProximo(Node<T> proximo) {
         this.proximo = proximo;
     }
 }
