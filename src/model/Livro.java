@@ -27,6 +27,7 @@ public class Livro {
         AnoPublicao = anoPublicao;
         Editora = editora;
     }
+
     public Livro(String titulo, String isbn, Autor autores, int anoPublicao) {
         Titulo = titulo;
         Isbn = isbn;
@@ -34,13 +35,14 @@ public class Livro {
         AnoPublicao = anoPublicao;
     }
 
-@Override
-    public String toString(){
-        return "Livro: %s, ISBN  %s, Autor:(%s) , Ano Publicação: %d".formatted(getTitulo(), getIsbn(), getAutores().toString(), getAnoPublicao());
+    @Override
+    public String toString() {
+        return "Livro: %s, ISBN  %s, %s , Ano Publicação: %d".formatted(getTitulo(), getIsbn(), getAutores().toString(), getAnoPublicao());
     }
 
- //region getters and setters
+    //region getters and setters
     private int AnoPublicao;
+
     public String getTitulo() {
         return Titulo;
     }
@@ -72,8 +74,14 @@ public class Livro {
     public void setAnoPublicao(int anoPublicao) {
         AnoPublicao = anoPublicao;
     }
+
     public void setAnoPublicao(String anoPublicao) {
-        AnoPublicao = Integer.parseInt(anoPublicao);
+        try {
+            AnoPublicao = Integer.parseInt(anoPublicao);
+        } catch (Exception e) {
+            AnoPublicao = 0;
+        }
+
     }
     //endregion
 }

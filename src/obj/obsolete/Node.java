@@ -1,4 +1,4 @@
-package obj;
+package obj.obsolete;
 public class Node<T> {
     private T valor;
     private Node<T> proximo;

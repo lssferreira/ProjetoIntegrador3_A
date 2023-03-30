@@ -1,4 +1,4 @@
-package obj;
+package obj.obsolete;
 
 import java.util.Comparator;
 

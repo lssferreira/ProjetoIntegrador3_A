@@ -1,8 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Autor {
     private String Nome;
     private String PaisOrigem;
@@ -37,5 +34,5 @@ public class Autor {
         else
             return "";
     }
-
+    //endregion
 }

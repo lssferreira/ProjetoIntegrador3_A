@@ -1,5 +1,6 @@
 package obj;
 
+import MenuView.OpcoesView;
 import model.Autor;
 import model.Livro;
 
@@ -44,23 +45,28 @@ public class ListaDeLivros {
     }
 
     public void exibirLista() {
-        for (Livro livro : this.listlivros)
-            System.out.println(livro.toString());
+        if (this.listlivros.size() == 0){
+            System.out.println("\nNenhum livro cadastrado!");
+            OpcoesView.pressioneEnterParaContinuar();
+        }
+        else
+            for (Livro livro : this.listlivros)
+                System.out.println(livro.toString());
     }
 
-    public void FiltrarListaPorAutor(Autor autor) {
+    public void filtrarListaPorAutor(Autor autor) {
         for (Livro livro : this.listlivros)
             if (livro.getAutores().getNome().toUpperCase().contains(autor.getNome().toUpperCase()))
                 System.out.println(livro.toString());
     }
 
-    public void FiltrarListaPorPeriodoAnoPublicacao(int pAnoInicial, int pAnoFinal) {
+    public void filtrarListaPorPeriodoAnoPublicacao(int pAnoInicial, int pAnoFinal) {
         for (Livro livro : this.listlivros)
             if (livro.getAnoPublicao() >= pAnoInicial && livro.getAnoPublicao() <= pAnoFinal)
                 System.out.println(livro.toString());
     }
 
-    public void FiltrarListaPorTitulo(String Titulo) {
+    public void filtrarListaPorTitulo(String Titulo) {
         for (Livro livro : this.listlivros)
             if (livro.getTitulo().toUpperCase().contains(Titulo.toUpperCase()))
                 System.out.println("Livro: %s, Autor:(%s), Ano Publicação: %d, Editora: %s".formatted(livro.getTitulo(), livro.getAutores(), livro.getAnoPublicao(), livro.getEditora()));
