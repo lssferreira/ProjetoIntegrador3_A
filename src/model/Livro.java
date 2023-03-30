@@ -8,6 +8,10 @@ public class Livro {
 
     private String Editora;
 
+    public Livro() {
+
+    }
+
     public String getEditora() {
         return Editora;
     }
@@ -67,6 +71,9 @@ public class Livro {
 
     public void setAnoPublicao(int anoPublicao) {
         AnoPublicao = anoPublicao;
+    }
+    public void setAnoPublicao(String anoPublicao) {
+        AnoPublicao = Integer.parseInt(anoPublicao);
     }
     //endregion
 }

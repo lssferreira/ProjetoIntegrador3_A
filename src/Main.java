@@ -4,8 +4,7 @@ import model.Autor;
 
 import controller.controleAutor;
 import controller.controleLivro;
-import model.Livro;
-import obj.ListaEncadeada;
+import obj.ListaDeLivros;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,7 +14,14 @@ public class Main {
     public static void main(String[] args) {
 
         var autores = new ArrayList<Autor>();
-        ListaEncadeada<Livro> listaLivro = new ListaEncadeada<Livro>();
+
+        //region Esperar retorno professor
+        // TODO: 30/03/2023 Verificar na correção se é necessario utilizar e implementar uma lista encadeada ou se é possivel utilizar um objeto java existente;
+        // obsolet: ListaEncadeada<Livro> listaLivro = new ListaEncadeada<Livro>();
+        //endregion
+
+        ListaDeLivros listaLivro = new ListaDeLivros();
+
         var listatesteCriada = false;
         Scanner scanner = new Scanner(System.in);
         while (true) {

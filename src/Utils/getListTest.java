@@ -2,10 +2,9 @@ package Utils;
 
 import model.Autor;
 import model.Livro;
-import obj.ListaEncadeada;
+import obj.ListaDeLivros;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class getListTest {
@@ -53,10 +52,10 @@ public class getListTest {
     }
 
 
-    public static void CriaListas(ArrayList<Autor> autores, ListaEncadeada<Livro> listaLivro) {
+    public static void CriaListas(ArrayList<Autor> autores, ListaDeLivros listaLivro) {
         // Adiciona lista de livros para teste
         for (Livro li : getListTest.getListaLivros()) {
-            listaLivro.inserirFim(li);
+            listaLivro.incluiNoFim(li);
         }
         // Adiciona lista de autores para teste
         autores.addAll(getListTest.getListaAutores());
