@@ -1,5 +1,6 @@
 package MenuView;
 
+import Excecoes.ExcecaoDeLivroJaExistente;
 import model.Autor;
 import model.Livro;
 
@@ -11,7 +12,7 @@ import java.util.Scanner;
 
 public class MenuLivros {
 
-    public static void mostrarMenuLivros(ListaDeLivros listaLivro) {
+    public static void mostrarMenuLivros(ListaDeLivros listaLivro){
         var continuar = true;
         while (continuar) {
             OpcoesView.opcoesDisponiveis();
@@ -132,8 +133,20 @@ public class MenuLivros {
         }
     }
 
-    private static void menuAdicionarLivro(ListaDeLivros listaLivro) {
+    private static void menuAdicionarLivro(ListaDeLivros listaLivro){
         Livro lv = cadastrarLivro();
+
+        try {
+            if (ControleLivros.ExisteLivro(listaLivro, lv)) {
+                throw new ExcecaoDeLivroJaExistente("O Livro já Existe na Lista. \nCadastro Cancelado");
+            }
+        } catch (ExcecaoDeLivroJaExistente e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
+        System.out.print("Livro a ser cadastrado:");
+        System.out.print(lv);
 
         var continuar = true;
         while (continuar) {
@@ -178,9 +191,6 @@ public class MenuLivros {
         lv.setEditora(scanner.nextLine());
         System.out.print("\nAno de Publicação:");
         lv.setAnoPublicao(scanner.nextLine());
-
-        System.out.println("\nLivro a ser cadastrado");
-        lv.toString();
         return lv;
     }
 }

@@ -7,7 +7,6 @@ import obj.ListaDeLivros;
 import java.util.Scanner;
 
 public class ControleLivros {
-    static Scanner scanner = new Scanner(System.in);
 
     public static void mostrarListaLivrosTitulo(ListaDeLivros listaLivro, String titulo) {
         listaLivro.filtrarListaPorTitulo(titulo);
@@ -45,5 +44,9 @@ public class ControleLivros {
 
     public static void removerDoFim(ListaDeLivros listaLivro) {
         listaLivro.removerDoFim();
+    }
+
+    public static boolean ExisteLivro(ListaDeLivros listaLivro, Livro lv) {
+        return listaLivro.ExisteLivro(lv);
     }
 }

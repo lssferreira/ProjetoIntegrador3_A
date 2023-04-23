@@ -1,23 +1,41 @@
 package controller;
 
-import MenuView.OpcoesView;
 import model.Autor;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ControleAutor {
-    static Scanner scanner = new Scanner(System.in);
 
     public static void cadastrarAutor(ArrayList<Autor> autores, String[] autor) {
+
+        Autor aux;
         if (autor.length == 2)
-            autores.add(new Autor(autor[0], autor[1]));
+            aux = (new Autor(autor[0], autor[1]));
         else
-            autores.add(new Autor(autor[0]));
+            aux = (new Autor(autor[0]));
+
+        try {
+            if (ExisteAutor(autores, aux))
+                throw new IllegalArgumentException("Autor já cadastrado");
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        autores.add(aux);
+    }
+
+    private static boolean ExisteAutor(ArrayList<Autor> autores, Autor aux) {
+        for (Autor elemento : autores) {
+            if (elemento.equals(aux))
+                return true;
+        }
+        return false;
     }
 
     public static void pesquisaAutorNome(ArrayList<Autor> autores, String nomeAutor) {
-        ArrayList<Autor> listFilter = new ArrayList<Autor>();
+        ArrayList<Autor> listFilter = new ArrayList<>();
         for (Autor elemento : autores) {
             if (elemento.getNome().toUpperCase().contains(nomeAutor.toUpperCase()))
                 listFilter.add(elemento);

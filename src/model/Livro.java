@@ -40,6 +40,12 @@ public class Livro {
         return "Livro: %s, ISBN  %s, %s , Ano Publicação: %d".formatted(getTitulo(), getIsbn(), getAutores().toString(), getAnoPublicao());
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        Livro NovoLivro = (Livro) obj;
+        return this.getIsbn().equals(NovoLivro.getIsbn()) && this.getTitulo().equals(NovoLivro.getTitulo());
+    }
+
     //region getters and setters
     private int AnoPublicao;
 
@@ -77,9 +83,9 @@ public class Livro {
 
     public void setAnoPublicao(String anoPublicao) {
         try {
-            AnoPublicao = Integer.parseInt(anoPublicao);
+            setAnoPublicao(Integer.parseInt(anoPublicao));
         } catch (Exception e) {
-            AnoPublicao = 0;
+            setAnoPublicao(1);
         }
 
     }

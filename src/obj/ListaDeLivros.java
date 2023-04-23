@@ -12,7 +12,7 @@ public class ListaDeLivros {
     private ArrayList<Livro> listlivros;
 
     public ListaDeLivros() {
-        this.listlivros = new ArrayList<Livro>();
+        this.listlivros = new ArrayList<>();
     }
 
     public void incluiNoInicio(Livro livro) {
@@ -45,11 +45,10 @@ public class ListaDeLivros {
     }
 
     public void exibirLista() {
-        if (this.listlivros.size() == 0){
+        if (this.listlivros.size() == 0) {
             System.out.println("\nNenhum livro cadastrado!");
             OpcoesView.pressioneEnterParaContinuar();
-        }
-        else
+        } else
             for (Livro livro : this.listlivros)
                 System.out.println(livro.toString());
     }
@@ -70,5 +69,12 @@ public class ListaDeLivros {
         for (Livro livro : this.listlivros)
             if (livro.getTitulo().toUpperCase().contains(Titulo.toUpperCase()))
                 System.out.println("Livro: %s, Autor:(%s), Ano Publicação: %d, Editora: %s".formatted(livro.getTitulo(), livro.getAutores(), livro.getAnoPublicao(), livro.getEditora()));
+    }
+
+    public boolean ExisteLivro(Livro lv) {
+        for (Livro livro : this.listlivros)
+            if (livro.equals(lv))
+                return true;
+        return false;
     }
 }

@@ -13,6 +13,14 @@ public class Autor {
         Nome = nome;
     }
 
+    public Autor() {
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Autor NovoAutor = (Autor) obj;
+        return this.getNome().equals(NovoAutor.getNome()) && this.getPaisOrigem().equals(NovoAutor.getPaisOrigem());
+    }
 
     @Override
     public String toString() {
@@ -22,7 +30,6 @@ public class Autor {
             return "Autor: %s".formatted(getNome());
 
     }
-
     //region getter
     public String getNome() {
         return Nome;
