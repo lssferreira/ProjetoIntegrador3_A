@@ -8,11 +8,14 @@ import controller.ControleLivros;
 
 import obj.ListaDeLivros;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import static controller.ControleAutor.ExisteAutor;
 
 public class MenuLivros {
 
-    public static void mostrarMenuLivros(ListaDeLivros listaLivro){
+    public static void mostrarMenuLivros(ListaDeLivros listaLivro, ArrayList<Autor> autores) {
         var continuar = true;
         while (continuar) {
             OpcoesView.opcoesDisponiveis();
@@ -34,7 +37,7 @@ public class MenuLivros {
                     break;
                 }
                 case "2": {
-                    menuAdicionarLivro(listaLivro);
+                    menuAdicionarLivro(listaLivro, autores);
                     break;
                 }
                 case "3": {
@@ -133,7 +136,7 @@ public class MenuLivros {
         }
     }
 
-    private static void menuAdicionarLivro(ListaDeLivros listaLivro){
+    private static void menuAdicionarLivro(ListaDeLivros listaLivro, ArrayList<Autor> autores) {
         Livro lv = cadastrarLivro();
 
         try {
@@ -158,10 +161,12 @@ public class MenuLivros {
             continuar = false;
             switch (new Scanner(System.in).nextLine()) {
                 case "1": {
+                    CriaRegistroAutor(autores, lv);
                     ControleLivros.incluiLivroNoInicio(listaLivro, lv);
                     break;
                 }
                 case "2": {
+                    CriaRegistroAutor(autores, lv);
                     ControleLivros.incluiLivroNoFim(listaLivro, lv);
                     break;
                 }
@@ -174,6 +179,11 @@ public class MenuLivros {
                 }
             }
         }
+    }
+
+    private static void CriaRegistroAutor(ArrayList<Autor> autores, Livro lv) {
+        if (!ExisteAutor(autores, lv.getAutores()))
+            autores.add(lv.getAutores());
     }
 
     private static Livro cadastrarLivro() {

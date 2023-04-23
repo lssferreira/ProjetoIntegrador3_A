@@ -23,7 +23,7 @@ public class MenuPrincipal {
                 System.out.println("8 - Teste(Cria lista de autores e Livros)");
             OpcoesView.digiteaOpcaoDesejada();
             switch (new Scanner(System.in).nextLine()) {
-                case "1" -> MenuLivros.mostrarMenuLivros(listaLivro);
+                case "1" -> MenuLivros.mostrarMenuLivros(listaLivro,autores);
                 case "2" -> MenuAutor.MostrarMenuAutores(autores);
                 case "8" -> listatesteCriada = GetListTest.CriaListas(autores, listaLivro);
                 default -> OpcoesView.opcaoInvalida();

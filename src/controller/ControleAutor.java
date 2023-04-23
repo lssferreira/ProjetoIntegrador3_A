@@ -26,7 +26,7 @@ public class ControleAutor {
         autores.add(aux);
     }
 
-    private static boolean ExisteAutor(ArrayList<Autor> autores, Autor aux) {
+    public static boolean ExisteAutor(ArrayList<Autor> autores, Autor aux) {
         for (Autor elemento : autores) {
             if (elemento.equals(aux))
                 return true;
